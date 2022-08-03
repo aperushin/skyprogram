@@ -1,13 +1,15 @@
 from flask import Blueprint, jsonify
 
-import utils
+from utils import get_logger
 from config.constants import API_LOG_PATH
 from posts_dao import PostsDAO
 
 api = Blueprint('api', __name__)
 
-api_logger = utils.get_logger('api', filename=API_LOG_PATH)
+# Create logger that writes to the specified file
+api_logger = get_logger('api', filename=API_LOG_PATH)
 
+# Create data access object for posts
 posts_dao = PostsDAO()
 
 

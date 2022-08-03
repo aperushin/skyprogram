@@ -2,8 +2,10 @@ from bookmarks.bookmarks_dao import BookmarksDAO
 from posts_dao import PostsDAO
 from flask import Blueprint, render_template
 
+# Create blueprint
 main = Blueprint('main', __name__)
 
+# Create data access objects for posts and bookmarks
 posts_dao = PostsDAO()
 bookmarks_dao = BookmarksDAO()
 

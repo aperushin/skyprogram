@@ -8,10 +8,12 @@ class BookmarksDAO:
 
     @staticmethod
     def load() -> list[int]:
+        """Load bookmarks from file"""
         return load_json(BOOKMARKS_FILE)
 
     @staticmethod
     def write(data: list[int]) -> None:
+        """Write bookmarks list to a file, overwriting the contents"""
         write_json(data, BOOKMARKS_FILE)
 
     def get_posts(self) -> list[Post]:
@@ -44,5 +46,6 @@ class BookmarksDAO:
             self.write(bookmarks)
 
     def get_count(self) -> int:
+        """Get the count of bookmarks"""
         bookmarks = self.load()
         return len(bookmarks)

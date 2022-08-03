@@ -7,11 +7,13 @@ class PostsDAO:
 
     @staticmethod
     def load() -> list[Post]:
+        """Load all posts from the file, initializing Post class instances"""
         posts_data = load_json(DATA_FILE)
         posts = [Post(**post) for post in posts_data]
         return posts
 
     def get_by_id(self, post_id: int) -> Post:
+        """Get a single post by its id"""
         posts = self.load()
 
         for post in posts:
@@ -19,6 +21,7 @@ class PostsDAO:
                 return post
 
     def get_by_user(self, user_name: str) -> list[Post]:
+        """Get a list of posts by poster's username"""
         posts = self.load()
         result = []
 

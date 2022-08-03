@@ -2,8 +2,10 @@ from flask import Blueprint, redirect, render_template
 
 from bookmarks.bookmarks_dao import BookmarksDAO
 
+# Create blueprint
 bookmarks = Blueprint('bookmarks', __name__)
 
+# Create data access object for bookmarks
 bookmarks_dao = BookmarksDAO()
 
 

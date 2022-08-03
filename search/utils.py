@@ -3,6 +3,7 @@ from posts_dao import PostsDAO
 
 
 def search_for_posts(query: str) -> list[Post]:
+    """Search all posts by a keyword"""
     posts_dao = PostsDAO()
     posts = posts_dao.load()
     result = []

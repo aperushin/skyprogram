@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 
 from search.utils import search_for_posts
 
+# Create blueprint
 search = Blueprint('search', __name__)
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-
+# Create blueprint
 error_handlers = Blueprint('error_handlers', __name__)
 
 

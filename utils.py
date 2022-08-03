@@ -4,14 +4,17 @@ from flask import Flask, Blueprint
 
 
 def create_app(blueprints: list[Blueprint]) -> Flask:
+    """Create a Flask app"""
     app = Flask(__name__)
 
+    # Load the app config based on the APP_CONFIG environment variable
     environment = os.getenv('APP_CONFIG')
     if environment == 'dev':
         app.config.from_pyfile('config/development.py')
-    elif environment == 'prod':
+    else:
         app.config.from_pyfile('config/production.py')
 
+    # Register blueprints
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
 
