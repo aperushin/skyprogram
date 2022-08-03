@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from file_utils import load_json
-from config import COMMENTS_FILE
+from config.constants import COMMENTS_FILE
 
 
 @dataclass(slots=True)

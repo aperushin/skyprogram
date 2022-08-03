@@ -1,7 +1,21 @@
+import os
 import logging
-from config import DATA_FILE
-from post import Post
-from file_utils import load_json
+from flask import Flask, Blueprint
+
+
+def create_app(blueprints: list[Blueprint]) -> Flask:
+    app = Flask(__name__)
+
+    environment = os.getenv('APP_CONFIG')
+    if environment == 'dev':
+        app.config.from_pyfile('config/development.py')
+    elif environment == 'prod':
+        app.config.from_pyfile('config/production.py')
+
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
+
+    return app
 
 
 def get_logger(name: str, filename: str) -> logging.Logger:
@@ -14,49 +28,3 @@ def get_logger(name: str, filename: str) -> logging.Logger:
 
     logger.addHandler(file_handler)
     return logger
-
-
-def get_posts_all() -> list[Post]:
-    posts_data = load_json(DATA_FILE)
-    posts = [Post(**post) for post in posts_data]
-    return posts
-
-
-def get_post_by_id(post_id: int) -> Post:
-    posts = get_posts_all()
-    for post in posts:
-        if post.pk == post_id:
-            return post
-
-
-def get_posts_by_user(user_name: str) -> list[Post]:
-    posts = get_posts_all()
-    result = []
-    for post in posts:
-        if post.poster_name == user_name:
-            result.append(post)
-    return result
-
-
-def search_for_posts(query: str) -> list[Post]:
-    posts = get_posts_all()
-    result = []
-    for post in posts:
-        if query.lower() in post.content.lower():
-            result.append(post)
-            if len(result) == 10:
-                # Отдавать только первые 10 результатов
-                break
-    return result
-
-
-def search_posts_by_tag(tagname):
-    posts = get_posts_all()
-    result = []
-    for post in posts:
-        if tagname.lower() in post.content_tagged.lower():
-            result.append(post)
-            if len(result) == 10:
-                # Отдавать только первые 10 результатов
-                break
-    return result
