@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request
 
-from search.utils import search_for_posts
+from .utils import search_for_posts
 
 # Create blueprint
-search = Blueprint('search', __name__)
+search = Blueprint('search', __name__, template_folder='templates')
 
 
 @search.get('/search/')

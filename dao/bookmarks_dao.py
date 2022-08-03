@@ -1,7 +1,7 @@
 from config.constants import BOOKMARKS_FILE
 from file_utils import load_json, write_json
 from post import Post
-from posts_dao import PostsDAO
+from dao.posts_dao import PostsDAO
 
 
 class BookmarksDAO:

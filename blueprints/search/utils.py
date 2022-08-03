@@ -1,5 +1,5 @@
 from post import Post
-from posts_dao import PostsDAO
+from dao.posts_dao import PostsDAO
 
 
 def search_for_posts(query: str) -> list[Post]:

@@ -1,5 +1,5 @@
 import pytest
-from posts_dao import PostsDAO
+from dao.posts_dao import PostsDAO
 from post import Post
 
 

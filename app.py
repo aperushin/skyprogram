@@ -5,11 +5,11 @@ from utils import create_app
 from config.constants import ACCESS_LOG_PATH
 
 # Import blueprints
-from api.views import api
-from bookmarks.views import bookmarks
-from error.views import error_handlers
-from main.views import main
-from search.views import search
+from blueprints.api.views import api
+from blueprints.bookmarks.views import bookmarks
+from blueprints.error.views import error_handlers
+from blueprints.main.views import main
+from blueprints.search.views import search
 
 # Load environment variables from .env
 load_dotenv(override=True)

@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 
 from utils import get_logger
 from config.constants import API_LOG_PATH
-from posts_dao import PostsDAO
+from dao.posts_dao import PostsDAO
 
 api = Blueprint('api', __name__)
 
