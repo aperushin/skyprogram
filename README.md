@@ -26,4 +26,4 @@ Install project requirements:
 (venv)$ python -m flask run -h 127.0.0.1 -p 5000
 ```
 
-Side should be available on http://127.0.0.1:5000
+The site should be available on http://127.0.0.1:5000
